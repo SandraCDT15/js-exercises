@@ -5,6 +5,7 @@ import AppBarElem from "./AppBar";
 import MenuElem from "./Menu";
 import TabElem from "./Tab";
 import CardElem from "./Card";
+import DialogElem from "./Dialog";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       {/* <TypoElem />
       <Buttons /> */}
       {/* <AppBarElem /> */}
-      <CardElem />
+      {/* <CardElem /> */}
+      <DialogElem />
       {/* <MenuElem /> */}
       {/* <TextFieldElem /> */}
       {/* <TabElem /> */}
