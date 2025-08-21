@@ -1,12 +1,13 @@
 import React from "react";
-import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import { AppBar, Button, Toolbar } from "@mui/material";
+import TabElem from "./Tab";
 
 const AppBarElem = () => {
   return (
     <div>
       <AppBar variant="outlined">
         <Toolbar>
-          <Typography>LOGO</Typography>
+          <TabElem />
           <Button
             variant="contained"
             sx={{ marginLeft: "auto" }}

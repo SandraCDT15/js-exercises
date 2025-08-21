@@ -10,10 +10,10 @@ function App() {
     <div>
       {/* <TypoElem />
       <Buttons /> */}
-      {/* <AppBarElem /> */}
+      <AppBarElem />
       {/* <MenuElem /> */}
       {/* <TextFieldElem /> */}
-      <TabElem />
+      {/* <TabElem /> */}
     </div>
   );
 }
