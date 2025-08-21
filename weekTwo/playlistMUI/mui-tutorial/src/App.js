@@ -1,23 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import TypoElem from "./Typography";
+import Buttons from "./Buttons";
+import TextFieldElem from "./Textfield";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <TypoElem />
+      <Buttons />
+      <TextFieldElem />
     </div>
   );
 }

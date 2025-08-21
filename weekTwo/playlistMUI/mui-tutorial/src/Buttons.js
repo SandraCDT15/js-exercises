@@ -5,23 +5,24 @@ import { Fingerprint } from "@mui/icons-material";
 const Buttons = () => {
   return (
     <div>
-      <Button variant="text" disabled>
+      <Button sx={{ margin: 3 }} variant="text" disabled>
         Text
       </Button>
       <Button
+        sx={{ margin: 3 }}
         variant="contained"
         color="success"
         onClick={() => alert("clicked")}
       >
         Contained
       </Button>
-      <Button variant="outlined" color="secondary">
+      <Button sx={{ margin: 3 }} variant="outlined" color="secondary">
         Outlined
       </Button>
 
       <IconButton
+        sx={{ margin: 3, color: "blue" }}
         aria-label="fingerprint"
-        sx={{ color: "blue" }}
         onClick={() => alert("Fingerprint clicked")}
       >
         <Fingerprint />
