@@ -4,13 +4,15 @@ import TextFieldElem from "./Textfield";
 import AppBarElem from "./AppBar";
 import MenuElem from "./Menu";
 import TabElem from "./Tab";
+import CardElem from "./Card";
 
 function App() {
   return (
     <div>
       {/* <TypoElem />
       <Buttons /> */}
-      <AppBarElem />
+      {/* <AppBarElem /> */}
+      <CardElem />
       {/* <MenuElem /> */}
       {/* <TextFieldElem /> */}
       {/* <TabElem /> */}
