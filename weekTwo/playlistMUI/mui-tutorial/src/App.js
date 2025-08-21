@@ -6,6 +6,7 @@ import MenuElem from "./Menu";
 import TabElem from "./Tab";
 import CardElem from "./Card";
 import DialogElem from "./Dialog";
+import ModalElem from "./Modal";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       <Buttons /> */}
       {/* <AppBarElem /> */}
       {/* <CardElem /> */}
-      <DialogElem />
+      {/* <DialogElem /> */}
+      <ModalElem />
       {/* <MenuElem /> */}
       {/* <TextFieldElem /> */}
       {/* <TabElem /> */}
