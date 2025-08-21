@@ -5,8 +5,8 @@ import TextFieldElem from "./Textfield";
 function App() {
   return (
     <div>
-      <TypoElem />
-      <Buttons />
+      {/* <TypoElem />
+      <Buttons /> */}
       <TextFieldElem />
     </div>
   );

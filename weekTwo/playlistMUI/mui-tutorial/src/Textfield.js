@@ -1,11 +1,21 @@
 import React, { useState } from "react";
-import { Button, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  TextField,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
+
+import { pink } from "@mui/material/colors";
 
 const TextFieldElem = () => {
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
     password: "",
+    subscribe: false,
+    terms: false,
   });
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -19,7 +29,10 @@ const TextFieldElem = () => {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form
+        style={{ display: "flex", flexDirection: "column" }}
+        onSubmit={handleSubmit}
+      >
         <TextField
           name="name"
           value={inputs.name}
@@ -47,9 +60,39 @@ const TextFieldElem = () => {
           variant="standard"
           placeholder="Password"
         ></TextField>
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Checkbox
+                onChange={() =>
+                  setInputs((prevState) => ({
+                    ...prevState,
+                    subscribe: !inputs.subscribe.value,
+                  }))
+                }
+              />
+            }
+            label="Subscribe"
+          />
+          <FormControlLabel
+            name="terms"
+            color="secondary"
+            required
+            control={
+              <Checkbox
+                onChange={() =>
+                  setInputs((prevState) => ({
+                    ...prevState,
+                    terms: !inputs.terms.value,
+                  }))
+                }
+              />
+            }
+            label="I accept terms and conditions"
+          />
+        </FormGroup>
         <Button type="submit">Submit</Button>
       </form>
-      <Typography>{inputs.name}</Typography>
     </div>
   );
 };
