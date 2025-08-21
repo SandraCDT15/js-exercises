@@ -4,10 +4,12 @@ import {
   TextField,
   FormGroup,
   FormControlLabel,
+  FormControl,
+  Select,
+  MenuItem,
+  InputLabel,
   Checkbox,
 } from "@mui/material";
-
-import { pink } from "@mui/material/colors";
 
 const TextFieldElem = () => {
   const [inputs, setInputs] = useState({
@@ -16,6 +18,7 @@ const TextFieldElem = () => {
     password: "",
     subscribe: false,
     terms: false,
+    age: 0,
   });
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -91,6 +94,19 @@ const TextFieldElem = () => {
             label="I accept terms and conditions"
           />
         </FormGroup>
+        <FormControl fullwidth>
+          <InputLabel>Age</InputLabel>
+          <Select
+            name="age"
+            value={inputs.age}
+            label="Age"
+            onChange={handleChange}
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
         <Button type="submit">Submit</Button>
       </form>
     </div>
