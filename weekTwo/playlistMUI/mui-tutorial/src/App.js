@@ -14,9 +14,9 @@ function App() {
       {/* <TypoElem />
       <Buttons /> */}
       {/* <AppBarElem /> */}
-      {/* <CardElem /> */}
+      <CardElem />
       {/* <DialogElem /> */}
-      <ModalElem />
+      {/* <ModalElem /> */}
       {/* <MenuElem /> */}
       {/* <TextFieldElem /> */}
       {/* <TabElem /> */}
