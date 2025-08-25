@@ -7,19 +7,21 @@ import TabElem from "./Tab";
 import CardElem from "./Card";
 import DialogElem from "./Dialog";
 import ModalElem from "./Modal";
+import ListElem from "./List";
 
 function App() {
   return (
     <div>
-      {/* <TypoElem />
-      <Buttons /> */}
       {/* <AppBarElem /> */}
-      <CardElem />
+      {/* <Buttons /> */}
+      {/* <CardElem /> */}
       {/* <DialogElem /> */}
-      {/* <ModalElem /> */}
       {/* <MenuElem /> */}
-      {/* <TextFieldElem /> */}
+      {/* <ModalElem /> */}
+      <ListElem />
       {/* <TabElem /> */}
+      {/* <TextFieldElem /> */}
+      {/* <TypoElem />*/}
     </div>
   );
 }
