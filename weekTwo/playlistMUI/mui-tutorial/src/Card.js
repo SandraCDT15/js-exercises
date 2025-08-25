@@ -13,7 +13,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const CardElem = () => {
   return (
-    <Card sx={{ maxWidth: 500, margin: 3 }}>
+    <Card sx={{ maxWidth: 300, margin: 3 }}>
       <CardActionArea>
         <CardMedia
           component="img"
