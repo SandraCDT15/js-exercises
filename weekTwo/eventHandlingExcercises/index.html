@@ -4,21 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Handling Exercises</title>
+    <style>
+      .slideshow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+      }
+
+      .slideshow img {
+        width: 300px;
+        height: auto;
+      }
+    </style>
   </head>
   <body>
-    <form id="myForm" novalidate>
-      <label for="name">Name:</label>
-      <input type="text" name="name" id="name" required />
-      <br />
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email" required />
-      <br />
-      <label for="message">Message:</label>
-      <textarea name="message" id="message" required></textarea>
-      <br />
-      <button type="submit">Submit</button>
-    </form>
-    <div id="errorMessages"></div>
-    <script src="4_formValidation.js"></script>
+    <div class="slideshow">
+      <button id="previousBtn">Previous</button>
+      <img id="image" src="image1.jpg" />
+      <button id="nextBtn">Next</button>
+    </div>
+    <script src="5_slideShow.js"></script>
   </body>
 </html>
