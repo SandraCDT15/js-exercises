@@ -5,25 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Handling Exercises</title>
     <style>
-      .slideshow {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 300px;
+      .drag-list {
+        list-style: none;
+        padding: 0;
       }
 
-      .slideshow img {
-        width: 300px;
-        height: auto;
+      .drag-item {
+        background-color: #cc56ff;
+        padding: 10px;
+        margin-bottom: 5px;
+        cursor: move;
       }
     </style>
   </head>
   <body>
-    <div class="slideshow">
-      <button id="previousBtn">Previous</button>
-      <img id="image" src="image1.jpg" />
-      <button id="nextBtn">Next</button>
-    </div>
-    <script src="5_slideShow.js"></script>
+    <ul id="dragList" class="drag-list">
+      <li class="drag-item" draggable="true">Mobile</li>
+      <li class="drag-item" draggable="true">Laptop</li>
+      <li class="drag-item" draggable="true">Desktop</li>
+      <li class="drag-item" draggable="true">Television</li>
+      <li class="drag-item" draggable="true">Radio</li>
+    </ul>
+    <script src="6_dragAndDropList.js"></script>
   </body>
 </html>
