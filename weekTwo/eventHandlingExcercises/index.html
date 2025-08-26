@@ -5,22 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Handling Exercises</title>
   </head>
+  <style>
+    .parent {
+      width: 200px;
+      height: 200px;
+      background-color: lightblue;
+      position: relative;
+    }
+    .child {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      top: 50px;
+      left: 50px;
+    }
+  </style>
   <body>
-    <form>
-      <input
-        type="text"
-        name="username"
-        placeholder="Enter your username"
-        required
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="Enter your email"
-        required
-      />
-      <button type="submit">Submit</button>
-    </form>
-    <script src="12_preventDefault.js"></script>
+    <div class="parent">
+      <div class="child"></div>
+    </div>
+    <script src="13_stopPropagation.js"></script>
   </body>
 </html>
