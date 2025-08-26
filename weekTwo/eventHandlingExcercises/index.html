@@ -5,18 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Handling Exercises</title>
     <style>
-      .hidden {
-        display: none;
+      .progress-bar {
+        width: 300px;
+        height: 20px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .progress-bar-fill {
+        height: 100%;
+        background-color: #4caf50;
+        transition: width 0.3s;
       }
     </style>
   </head>
   <body>
-    <div>
-      <button class="switch-btn">Click me!</button>
-      <p class="hello">Welcome!</p>
-      <p class="hidden bye">Goodbye!</p>
-    </div>
+    <button class="fill-btn">+ 1%</button>
 
-    <script src="7_toggleSwitch.js"></script>
+    <div class="progress-bar">
+      <div class="progress-bar-fill" id="progress"></div>
+    </div>
+    <script src="8_progressBar.js"></script>
   </body>
 </html>
