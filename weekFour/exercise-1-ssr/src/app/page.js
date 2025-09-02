@@ -1,5 +1,6 @@
 import Appbar from "@/components/Appbar";
 import DrawerElm from "@/components/Drawer";
+import MainBox from "@/components/MainBox";
 import { Box } from "@mui/material";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <Box>
       <Appbar />
       <DrawerElm />
+      <MainBox />
     </Box>
   );
 }
