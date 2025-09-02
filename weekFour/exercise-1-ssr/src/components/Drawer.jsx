@@ -9,6 +9,8 @@ import {
   Toolbar,
 } from "@mui/material";
 
+export const drawerWidth = 200;
+
 const DrawerElm = () => {
   const DrawerList = (
     <Box>
@@ -26,7 +28,11 @@ const DrawerElm = () => {
   );
   return (
     <div>
-      <Drawer variant="permanent" anchor="left">
+      <Drawer
+        variant="permanent"
+        anchor="left"
+        sx={{ "& .MuiDrawer-paper": { width: drawerWidth } }}
+      >
         <Toolbar />
         {DrawerList}
       </Drawer>

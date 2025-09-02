@@ -1,11 +1,13 @@
 "use client";
 
-import { Box, Typography } from "@mui/material";
+import { Box, Toolbar, Typography } from "@mui/material";
+import { drawerWidth } from "./Drawer";
 
 const MainBox = () => {
   return (
     <div>
-      <Box component="main">
+      <Box component="main" sx={{ marginLeft: `${drawerWidth}px`, p: "3px" }}>
+        <Toolbar />
         <Typography>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ipsam
           nostrum dicta incidunt reprehenderit sit dolorem a totam perferendis,
