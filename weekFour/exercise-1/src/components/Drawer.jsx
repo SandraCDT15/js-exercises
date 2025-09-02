@@ -10,7 +10,7 @@ import {
 
 export const drawerWidth = 200;
 
-const DrawerElem = () => {
+const DrawerElem = ({ isMobile }) => {
   const DrawerList = (
     <Box>
       <List>
@@ -27,7 +27,7 @@ const DrawerElem = () => {
   return (
     <div>
       <Drawer
-        variant="permanent"
+        variant={isMobile ? "temporary" : "permanent"}
         anchor="left"
         sx={{ "& .MuiDrawer-paper": { width: `${drawerWidth}px` } }}
       >

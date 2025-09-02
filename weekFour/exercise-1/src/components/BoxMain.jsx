@@ -1,9 +1,12 @@
 import { Box, Toolbar, Typography } from "@mui/material";
 import { drawerWidth } from "./Drawer";
 
-const BoxMain = () => {
+const BoxMain = ({ isMobile }) => {
   return (
-    <Box component="main" sx={{ marginLeft: `${drawerWidth}px`, p: "3px" }}>
+    <Box
+      component="main"
+      sx={{ marginLeft: `${isMobile ? "0" : drawerWidth}px`, p: "3px" }}
+    >
       <Toolbar />
       <Typography>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro aperiam
