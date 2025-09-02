@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import {
   Box,
   Drawer,
@@ -11,7 +11,7 @@ import {
 
 export const drawerWidth = 200;
 
-const DrawerElm = () => {
+const DrawerElm = ({ isMobile, open, onClose }) => {
   const DrawerList = (
     <Box>
       <List>
@@ -29,7 +29,9 @@ const DrawerElm = () => {
   return (
     <div>
       <Drawer
-        variant="permanent"
+        variant={isMobile ? "temporary" : "permanent"}
+        open={open}
+        onClose={onClose}
         anchor="left"
         sx={{ "& .MuiDrawer-paper": { width: drawerWidth } }}
       >

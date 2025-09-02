@@ -1,12 +1,15 @@
-"use client";
+// "use client";
 
 import { Box, Toolbar, Typography } from "@mui/material";
 import { drawerWidth } from "./Drawer";
 
-const MainBox = () => {
+const MainBox = ({ isMobile }) => {
   return (
     <div>
-      <Box component="main" sx={{ marginLeft: `${drawerWidth}px`, p: "3px" }}>
+      <Box
+        component="main"
+        sx={{ marginLeft: `${isMobile ? "0" : drawerWidth}px`, p: "3px" }}
+      >
         <Toolbar />
         <Typography>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ipsam
