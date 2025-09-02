@@ -7,8 +7,7 @@ import { useState } from "react";
 
 function App() {
   const isMobile = useMediaQuery(useTheme().breakpoints.down("sm"));
-
-  const [open, setOpen] = useState(!isMobile);
+  const [open, setOpen] = useState(false);
 
   const toggleDrawer = () => {
     setOpen(!open);
