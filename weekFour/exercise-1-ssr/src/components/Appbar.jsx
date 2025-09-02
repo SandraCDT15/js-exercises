@@ -1,9 +1,13 @@
+"use client";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 
 const Appbar = () => {
   return (
     <div>
-      <AppBar>
+      <AppBar
+        position="fixed"
+        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      >
         <Toolbar>
           <Typography>Hello</Typography>
         </Toolbar>
