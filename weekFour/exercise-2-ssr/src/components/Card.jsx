@@ -18,8 +18,11 @@ const CardElm = ({ title, price, image, desc }) => {
           sx={{
             height: { xs: 200, sm: 300, md: 350, lg: 350, xl: 450 },
             width: { xs: 200, sm: 300, md: 350, lg: 350, xl: 450 },
-            justifyContent: "center",
+            objectFit: "contain",
+            margin: "0 auto",
+            display: "block",
           }}
+          component="img"
           image={image}
           title={title}
         />
