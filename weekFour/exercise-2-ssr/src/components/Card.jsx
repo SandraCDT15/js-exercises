@@ -13,11 +13,14 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 const CardElm = ({ title, price, image, desc }) => {
   return (
     <div>
-      <Card>
+      <Card
+        sx={{
+          maxWidth: { xs: 200, sm: 300, md: 350, lg: 350, xl: 450 },
+        }}
+      >
         <CardMedia
           sx={{
             height: { xs: 200, sm: 300, md: 350, lg: 350, xl: 450 },
-            width: { xs: 200, sm: 300, md: 350, lg: 350, xl: 450 },
             objectFit: "contain",
             margin: "0 auto",
             display: "block",
@@ -39,7 +42,7 @@ const CardElm = ({ title, price, image, desc }) => {
           <Typography
             sx={{ fontWeight: "bold", color: "#3d3d3dff", marginTop: 1 }}
           >
-            ${price}
+            {price}
           </Typography>
           <CardActions sx={{ padding: 0, marginTop: 2 }}>
             <Button
