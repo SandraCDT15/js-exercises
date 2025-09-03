@@ -1,10 +1,9 @@
-import CardElm from "@/components/Card";
-import ProductsElm from "@/components/Products";
+import ProductsList from "@/components/Products";
 
 export default function Home() {
   return (
     <div>
-      <ProductsElm />
+      <ProductsList />
     </div>
   );
 }
