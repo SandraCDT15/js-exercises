@@ -15,8 +15,11 @@ const CardElm = ({ title, price, image, desc }) => {
     <div>
       <Card
         sx={{
-          maxWidth: { xs: 200, sm: 300, md: 350, lg: 350, xl: 450 },
+          maxWidth: { xs: 250, sm: 350, md: 400, lg: 350, xl: 450 },
+          transition: "0.3s",
+          "&:hover": { transform: "scale(1.03)", boxShadow: 6 },
         }}
+        elevation={6}
       >
         <CardMedia
           sx={{

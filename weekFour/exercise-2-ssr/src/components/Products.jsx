@@ -17,7 +17,7 @@ const ProductsList = () => {
       title: "Impresora Epson",
       price: "$3,487",
       image: "/assets/epson.jpg",
-      desc: "Epson Ecotank Impresora Multifuncional a Color L3560",
+      desc: "Epson Ecotank Impresora Multifuncional a Color L3560, pantalla LCD.",
     },
     {
       id: 2,
