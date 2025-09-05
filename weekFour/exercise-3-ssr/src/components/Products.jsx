@@ -1,9 +1,10 @@
 "use client";
 
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Toolbar } from "@mui/material";
 import CardElem from "./Card";
+import { drawerWidth } from "./Drawer";
 
-const ProductsList = () => {
+const ProductsList = ({ isMobile }) => {
   const products = [
     {
       id: 0,
@@ -50,16 +51,25 @@ const ProductsList = () => {
   ];
   return (
     <div>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          marginLeft: `${isMobile ? "0" : drawerWidth}px`,
+          p: 2,
+          justifyItems: "center",
+        }}
+      >
+        <Toolbar />
         <Grid
-          sx={{ justifyContent: "center", margin: "3%" }}
+          sx={{ justifyItems: "center", margin: "3%", alignItems: "stretch" }}
           container
           size={12}
           rowSpacing={5}
         >
           {products.map((p) => (
             <Grid
-              sx={{ justifyItems: "center" }}
+              sx={{ justifyContent: "center", display: "flex" }}
               key={p.id}
               size={{ xs: 12, md: 6, lg: 4 }}
             >
