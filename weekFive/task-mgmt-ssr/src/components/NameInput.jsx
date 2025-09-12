@@ -1,10 +1,10 @@
 import { FormControl, InputLabel, OutlinedInput } from "@mui/material";
 
-const EmailInput = ({ id, name, value, onChange }) => {
+const NameInput = ({ name, value, onChange }) => {
   return (
     <FormControl>
-      <InputLabel htmlFor={id} sx={{ marginLeft: 0, marginTop: 3 }}>
-        Email
+      <InputLabel htmlFor="name-input" sx={{ marginLeft: 0, marginTop: 3 }}>
+        Name
       </InputLabel>
       <OutlinedInput
         sx={{
@@ -12,9 +12,9 @@ const EmailInput = ({ id, name, value, onChange }) => {
           marginLeft: 0,
           marginTop: 3,
         }}
-        id={id}
+        id="name-input"
         name={name}
-        type="email"
+        type="text"
         value={value}
         onChange={onChange}
       />
@@ -22,4 +22,4 @@ const EmailInput = ({ id, name, value, onChange }) => {
   );
 };
 
-export default EmailInput;
+export default NameInput;

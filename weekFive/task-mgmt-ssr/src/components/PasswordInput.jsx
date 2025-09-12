@@ -11,18 +11,26 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 
-const PasswordInput = ({ id, placeholder, name }) => {
+const PasswordInput = ({ id, placeholder, name, value, onChange }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickPassword = () => setShowPassword((show) => !show);
   return (
-    <FormControl sx={{ margin: 1 }}>
-      <InputLabel htmlFor={id}>{placeholder}</InputLabel>
+    <FormControl>
+      <InputLabel htmlFor={id} sx={{ marginLeft: 0, marginTop: 3 }}>
+        {placeholder}
+      </InputLabel>
       <OutlinedInput
-        sx={{ width: { xs: 250, m: 300, lg: 350 } }}
+        sx={{
+          width: { xs: 250, md: 300, lg: 350 },
+          marginLeft: 0,
+          marginTop: 3,
+        }}
         id={id}
         type={showPassword ? "text" : "password"}
         name={name}
+        value={value}
+        onChange={onChange}
         endAdornment={
           <IconButton onClick={handleClickPassword}>
             {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
