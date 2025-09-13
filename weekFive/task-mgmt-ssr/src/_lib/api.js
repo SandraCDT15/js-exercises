@@ -17,11 +17,11 @@ export async function registerUser(formData) {
 
 export async function loginUser({ email, password }) {
   const response = await fetch(
-    "https://bapi.suajam.com/arteukimil/api/v1/auth/login",
+    "https://bapi.suajam.com/arteukimil/api/v1/auth/login/",
     {
       method: "POST",
-      headers: { "Content-Type": "aplication/json" },
-      bosy: JSON.stringify({ email, password }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
     }
   );
 

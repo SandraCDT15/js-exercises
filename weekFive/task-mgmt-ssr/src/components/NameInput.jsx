@@ -1,10 +1,10 @@
 import { FormControl, InputLabel, OutlinedInput } from "@mui/material";
 
-const NameInput = ({ name, value, onChange }) => {
+const NameInput = ({ id, name, placeholder, value, onChange }) => {
   return (
     <FormControl>
       <InputLabel htmlFor="name-input" sx={{ marginLeft: 0, marginTop: 3 }}>
-        Name
+        {placeholder}
       </InputLabel>
       <OutlinedInput
         sx={{
@@ -12,7 +12,7 @@ const NameInput = ({ name, value, onChange }) => {
           marginLeft: 0,
           marginTop: 3,
         }}
-        id="name-input"
+        id={id}
         name={name}
         type="text"
         value={value}

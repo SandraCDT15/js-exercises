@@ -23,7 +23,8 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const result = await loginUser({ email, password });
+      const result = await loginUser(formData);
+
       console.log("Login successful: ", result);
     } catch (err) {
       console.error(err.message);
@@ -59,5 +60,3 @@ const Login = () => {
     </Box>
   );
 };
-
-export default Login;

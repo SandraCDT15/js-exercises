@@ -5,14 +5,15 @@ import EmailInput from "@/components/EmailInput";
 import NameInput from "@/components/NameInput";
 import PasswordInput from "@/components/PasswordInput";
 import { Box, Button } from "@mui/material";
-import { registerUser } from "@/_lib/api";
+import { confirmEmail, registerUser, verifyEmail } from "@/_lib/api";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    first_name: "",
+    last_name: "",
     email: "",
-    password: "",
-    confirmPassword: "",
+    password1: "",
+    password2: "",
   });
 
   const handleChange = (e) => {
@@ -25,7 +26,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.password !== formData.confirmPassword) {
+    if (formData.password1 !== formData.password2) {
       console.error("Passwords do not match");
       return;
     }
@@ -48,7 +49,20 @@ const Register = () => {
         alignItems: "center",
       }}
     >
-      <NameInput name="name" value={formData.name} onChange={handleChange} />
+      <NameInput
+        id="first-name"
+        name="first_name"
+        placeholder="First name"
+        value={formData.first_name}
+        onChange={handleChange}
+      />
+      <NameInput
+        id="last-name"
+        name="last_name"
+        placeholder="Last name"
+        value={formData.last_name}
+        onChange={handleChange}
+      />
       <EmailInput
         id="register-email"
         name="email"
@@ -58,15 +72,15 @@ const Register = () => {
       <PasswordInput
         id="input-password"
         placeholder="Password"
-        name="password"
-        value={formData.password}
+        name="password1"
+        value={formData.password1}
         onChange={handleChange}
       />
       <PasswordInput
         id="confirm-password"
         placeholder="Confirm password"
-        name="confirmPassword"
-        value={formData.confirmPassword}
+        name="password2"
+        value={formData.password2}
         onChange={handleChange}
       />
       <Button
@@ -75,6 +89,9 @@ const Register = () => {
         sx={{ width: { xs: 250, md: 300, lg: 350 }, marginTop: 3 }}
       >
         Register
+      </Button>
+      <Button variant="contained" onClick={verifyEmail} sx={{ marginTop: 3 }}>
+        Confirm email
       </Button>
     </Box>
   );
