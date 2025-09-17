@@ -6,9 +6,10 @@ import PasswordInput from "@/components/PasswordInput";
 import { loginUser } from "@/_lib/api";
 import { validateEmail, validatePassword } from "@/_utils/validateEmail";
 import { Box, Button } from "@mui/material";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -38,7 +39,7 @@ const Login = () => {
       const result = await loginUser(formData);
 
       console.log("Login successful: ", result);
-      redirect("");
+      router.push("/");
     } catch (err) {
       console.error(err.message);
     }
