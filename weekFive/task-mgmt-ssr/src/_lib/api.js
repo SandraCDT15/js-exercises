@@ -34,8 +34,13 @@ export async function loginUser({ email, password }) {
 
 export async function getProducts() {
   const response = await fetch(
-    " https://bapi.suajam.com/arteukimil/api/v1/catalog/product?page=1&items=5"
+    " https://bapi.suajam.com/arteukimil/api/v1/catalog/product?page=1&items=5",
+    {
+      cache: "force-cache",
+      next: { revalidate: 30 },
+    }
   );
+  console.log(new Date().toLocaleTimeString());
 
   if (!response.ok) {
     throw new Error("Error fetching data");
