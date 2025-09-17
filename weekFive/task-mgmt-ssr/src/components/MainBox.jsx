@@ -1,7 +1,7 @@
 import { Box, Toolbar } from "@mui/material";
 import { drawerWidth } from "./Drawer";
 
-const MainBox = ({ isMobile }) => {
+const MainBox = ({ isMobile, children }) => {
   return (
     <div>
       <Box
@@ -15,6 +15,7 @@ const MainBox = ({ isMobile }) => {
         {" "}
         {console.log(isMobile)}
         <Toolbar />
+        {children}
       </Box>
     </div>
   );
