@@ -8,8 +8,8 @@ import { useState } from "react";
 
 const CreateProvider = () => {
   const [formData, setFormData] = useState({
-    bussinesName: "",
-    bussinesType: undefined,
+    bussines_name: "",
+    bussines_type: undefined,
   });
 
   const handleChange = (e) => {
@@ -22,12 +22,12 @@ const CreateProvider = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.bussinesName.length === 0) {
+    if (formData.bussines_name.length === 0) {
       console.error("Bussines name can´t be empty");
       return;
     }
 
-    if (formData.bussinesType != 1 && formData.bussinesType != 2) {
+    if (formData.bussines_type != 1 && formData.bussines_type != 2) {
       console.error("Bussines type can only be 1 or 2");
       return;
     }
@@ -49,16 +49,16 @@ const CreateProvider = () => {
     >
       <NameInput
         id="bussines-name"
-        name="bussinesName"
+        name="bussines_name"
         placeholder="Bussines Name"
-        value={FormData.bussinesName}
+        value={FormData.bussines_name}
         onChange={handleChange}
       />
       <NameInput
         id="bussines-type"
-        name="bussinesType"
+        name="bussines_type"
         placeholder="Bussines Type"
-        value={formData.bussinesType}
+        value={formData.bussines_type}
         onChange={handleChange}
       />
       <FormButton text="Create Provider" />

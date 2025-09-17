@@ -49,15 +49,15 @@ export async function getProducts() {
   return products.data;
 }
 
-export async function createProvider({ bussinesName, bussinesType }) {
+export async function createProvider({ bussines_name, bussines_type }) {
   const response = await fetch(
     "https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier",
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        bussinesName,
-        bussinesType,
+        bussines_name,
+        bussines_type,
         email: "sandragullit@gmail.com",
       }),
     }
