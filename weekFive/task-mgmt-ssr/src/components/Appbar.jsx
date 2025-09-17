@@ -1,8 +1,9 @@
-"use client";
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import useWindowSize from "@/_hooks/windowSize";
 
-const Appbar = ({ isMobile, onMenuClick }) => {
+const Appbar = ({ onMenuClick }) => {
+  const isMobile = useWindowSize() < 600;
   return (
     <div>
       <AppBar

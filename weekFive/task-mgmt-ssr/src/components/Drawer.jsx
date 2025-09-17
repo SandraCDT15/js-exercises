@@ -8,9 +8,13 @@ import {
   Toolbar,
 } from "@mui/material";
 
+import useWindowSize from "@/_hooks/windowSize";
+
 export const drawerWidth = 200;
 
-const DrawerElm = ({ isMobile, open, onClose }) => {
+const DrawerElm = ({ open, onClose }) => {
+  const isMobile = useWindowSize() < 600;
+
   const DrawerList = (
     <Box>
       <List>

@@ -1,12 +1,13 @@
-"use client";
-
 import ClientLayout from "@/components/ClientLayout";
+import Tasks from "@/components/Tasks";
+
+import ProductsList from "@/components/Tasks";
 
 export default function Home() {
   return (
     <div>
       <ClientLayout>
-        <h1>Children</h1>
+        <ProductsList />
       </ClientLayout>
     </div>
   );

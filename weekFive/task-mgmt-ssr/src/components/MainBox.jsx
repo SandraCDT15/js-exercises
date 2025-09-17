@@ -1,7 +1,9 @@
 import { Box, Toolbar } from "@mui/material";
 import { drawerWidth } from "./Drawer";
+import useWindowSize from "@/_hooks/windowSize";
 
-const MainBox = ({ isMobile, children }) => {
+const MainBox = ({ children }) => {
+  const isMobile = useWindowSize() < 600;
   return (
     <div>
       <Box
@@ -12,8 +14,6 @@ const MainBox = ({ isMobile, children }) => {
           justifyItems: "center",
         }}
       >
-        {" "}
-        {console.log(isMobile)}
         <Toolbar />
         {children}
       </Box>
