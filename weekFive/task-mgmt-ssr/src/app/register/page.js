@@ -4,10 +4,11 @@ import { Suspense, lazy, useState } from "react";
 import EmailInput from "@/components/EmailInput";
 import NameInput from "@/components/NameInput";
 import PasswordInput from "@/components/PasswordInput";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { registerUser } from "@/_lib/api";
 import Loading from "./loading";
 import { validateEmail, validatePassword } from "@/_utils/validateEmail";
+import FormButton from "@/components/FormButton";
 
 const LazyEmailInput = lazy(
   () =>
@@ -115,13 +116,7 @@ const Register = () => {
           value={formData.password2}
           onChange={handleChange}
         />
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{ width: { xs: 250, md: 300, lg: 350 }, marginTop: 3 }}
-        >
-          Register
-        </Button>
+        <FormButton text="Register" />
       </Suspense>
     </Box>
   );

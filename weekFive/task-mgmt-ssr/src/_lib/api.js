@@ -48,3 +48,24 @@ export async function getProducts() {
   const products = await response.json();
   return products.data;
 }
+
+export async function createProvider({ bussinesName, bussinesType }) {
+  const response = await fetch(
+    "https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        bussinesName,
+        bussinesType,
+        email: "sandragullit@gmail.com",
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("There was a problem adding the provider");
+  }
+
+  return response.json();
+}

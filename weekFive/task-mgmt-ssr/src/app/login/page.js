@@ -5,8 +5,9 @@ import EmailInput from "@/components/EmailInput";
 import PasswordInput from "@/components/PasswordInput";
 import { loginUser } from "@/_lib/api";
 import { validateEmail, validatePassword } from "@/_utils/validateEmail";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { useRouter } from "next/navigation";
+import FormButton from "@/components/FormButton";
 
 const Login = () => {
   const router = useRouter();
@@ -65,13 +66,7 @@ const Login = () => {
         value={formData.password}
         onChange={handleChange}
       />
-      <Button
-        type="submit"
-        variant="contained"
-        sx={{ width: { xs: 250, md: 300, lg: 350 }, marginTop: 3 }}
-      >
-        Login
-      </Button>
+      <FormButton text="Login" />
     </Box>
   );
 };
