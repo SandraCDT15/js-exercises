@@ -3,8 +3,10 @@
 import { useState } from "react";
 import EmailInput from "@/components/EmailInput";
 import PasswordInput from "@/components/PasswordInput";
-import { Box, Button } from "@mui/material";
 import { loginUser } from "@/_lib/api";
+import { validateEmail, validatePassword } from "@/_utils/validateEmail";
+import { Box, Button } from "@mui/material";
+import { redirect } from "next/navigation";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -22,10 +24,21 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!validateEmail(formData.email)) {
+      console.error("Invalid email format");
+      return;
+    }
+
+    if (!validatePassword(formData.password)) {
+      console.error("Password has empty spaces");
+      return;
+    }
+
     try {
       const result = await loginUser(formData);
 
       console.log("Login successful: ", result);
+      redirect("");
     } catch (err) {
       console.error(err.message);
     }
@@ -34,6 +47,7 @@ const Login = () => {
   return (
     <Box
       component="form"
+      noValidate
       onSubmit={handleSubmit}
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
@@ -60,3 +74,5 @@ const Login = () => {
     </Box>
   );
 };
+
+export default Login;
