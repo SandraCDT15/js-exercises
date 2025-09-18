@@ -49,22 +49,88 @@ export async function getProducts() {
   return products.data;
 }
 
-export async function createProvider({ bussines_name, bussines_type }) {
+export async function createProvider({ business_name, business_type }) {
+  const token = localStorage.getItem("token");
+  console.log(token);
   const response = await fetch(
     "https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier",
     {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${token}`,
+      },
       body: JSON.stringify({
-        bussines_name,
-        bussines_type,
-        email: "sandragullit@gmail.com",
+        business_name,
+        business_type,
       }),
     }
   );
 
   if (!response.ok) {
     throw new Error("There was a problem adding the provider");
+  }
+
+  return response.json();
+}
+
+export async function updateProvider() {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(
+    "https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier/89",
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${token}`,
+      },
+      body: JSON.stringify({ business_name: "Test2" }),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("There was a problem updating the provider");
+  }
+
+  return response.json();
+}
+
+export async function deleteProvider() {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(
+    "https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier",
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${token}`,
+      },
+      body: JSON.stringify({ business_name: "Test2" }),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("There was a problem updating the provider");
+  }
+
+  return response.json();
+}
+
+export async function refreshToken() {
+  const token = localStorage.getItem("token");
+  const response = await fetch(
+    "https://bapi.suajam.com/arteukimil/api/v1/auth/refresh-token",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token }),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Token couldnt be refreshed");
   }
 
   return response.json();
