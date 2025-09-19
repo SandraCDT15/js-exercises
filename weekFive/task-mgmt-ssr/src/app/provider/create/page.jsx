@@ -38,18 +38,6 @@ const CreateProvider = () => {
     } catch (err) {
       console.error(err.message);
     }
-    // try {
-    //   const result = await updateProvider();
-    //   console.log("Provider updated", result);
-    // } catch (err) {
-    //   console.error(err.message);
-    // }
-    // try {
-    //   const result = await deleteProvider();
-    //   console.log("Provider updated", result);
-    // } catch (err) {
-    //   console.error(err.message);
-    // }
   };
 
   return (

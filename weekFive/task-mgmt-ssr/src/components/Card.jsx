@@ -1,4 +1,5 @@
 import {
+  Button,
   Card,
   CardActions,
   CardContent,
@@ -6,7 +7,7 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 const CardElem = ({ title, id }) => {
   return (
@@ -54,9 +55,14 @@ const CardElem = ({ title, id }) => {
           </Typography>
         </CardContent>
         <CardActions sx={{ marginLeft: 1, marginBottom: 2 }}>
-          <IconButton aria-label="edit" href={`./provider/${id}`}>
-            <EditIcon />
-          </IconButton>
+          <Button
+            aria-label="edit"
+            href={`./products/${id}`}
+            variant="outlined"
+            startIcon={<RemoveRedEyeIcon />}
+          >
+            Details
+          </Button>
         </CardActions>
       </Card>
     </div>

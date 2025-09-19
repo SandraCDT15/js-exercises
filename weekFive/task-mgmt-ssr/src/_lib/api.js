@@ -96,6 +96,15 @@ export async function updateProvider(id) {
   return response.json();
 }
 
+// try {
+//   const result = await updateProvider();
+//   console.log("Provider updated", result);
+// } catch (err) {
+//   console.error(err.message);
+// }
+
+//Provider cant be deleted, has to be unavailable
+
 export async function deleteProvider() {
   const token = localStorage.getItem("token");
 
@@ -118,12 +127,40 @@ export async function deleteProvider() {
   return response.json();
 }
 
+// try {
+//   const result = await deleteProvider();
+//   console.log("Provider updated", result);
+// } catch (err) {
+//   console.error(err.message);
+// }
+
 export async function getProduct(id) {
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/catalog/product/${id}`
   );
   if (!response.ok) {
     throw new Error("Can´t get product");
+  }
+
+  return response.json();
+}
+
+export async function createProduct(name, category) {
+  const token = localStorage.getItem("token");
+  const response = await fetch(
+    "https://bapi.suajam.com/arteukimil/api/v1/catalog/product",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${token}`,
+      },
+      body: JSON.stringify({ name, category }),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("There was a problem creating the product.");
   }
 
   return response.json();
@@ -145,7 +182,29 @@ export async function updateProduct(id, name) {
   );
 
   if (!response.ok) {
-    throw new Error("There was a problem updating the provider");
+    throw new Error("There was a problem updating the product");
+  }
+
+  return response.json();
+}
+
+export async function deleteProduct(id) {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(
+    `https://bapi.suajam.com/arteukimil/api/v1/catalog/product/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${token}`,
+      },
+      body: JSON.stringify({ id, is_archived: true }),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Product coulnd't be deleted");
   }
 
   return response.json();

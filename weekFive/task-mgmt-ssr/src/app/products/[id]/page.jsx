@@ -1,5 +1,7 @@
 import { getProduct } from "@/_lib/api";
-import ProductsDetail from "@/components/ProductDetail";
+import EditModal from "@/components/EditModal";
+import TextInput from "@/components/TextInput";
+import { Box, Button } from "@mui/material";
 
 const page = async ({ params }) => {
   const info = await params;
@@ -7,7 +9,7 @@ const page = async ({ params }) => {
 
   return (
     <div>
-      <ProductsDetail product={result} />
+      <EditModal product={result} />
     </div>
   );
 };
