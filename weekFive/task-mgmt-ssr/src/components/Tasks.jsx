@@ -1,5 +1,4 @@
 import { Box, Grid, Toolbar } from "@mui/material";
-import { drawerWidth } from "./Drawer";
 import CardElem from "./Card";
 import { getProducts } from "@/_lib/api";
 

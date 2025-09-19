@@ -74,18 +74,18 @@ export async function createProvider({ business_name, business_type }) {
   return response.json();
 }
 
-export async function updateProvider() {
+export async function updateProvider(id) {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    "https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier/89",
+    `https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier/${id}`,
     {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `JWT ${token}`,
       },
-      body: JSON.stringify({ business_name: "Test2" }),
+      body: JSON.stringify({ id }),
     }
   );
 
@@ -108,6 +108,39 @@ export async function deleteProvider() {
         Authorization: `JWT ${token}`,
       },
       body: JSON.stringify({ business_name: "Test2" }),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("There was a problem updating the provider");
+  }
+
+  return response.json();
+}
+
+export async function getProduct(id) {
+  const response = await fetch(
+    `https://bapi.suajam.com/arteukimil/api/v1/catalog/product/${id}`
+  );
+  if (!response.ok) {
+    throw new Error("Can´t get product");
+  }
+
+  return response.json();
+}
+
+export async function updateProduct(id, name) {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(
+    `https://bapi.suajam.com/arteukimil/api/v1/catalog/product/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${token}`,
+      },
+      body: JSON.stringify({ id, name }),
     }
   );
 

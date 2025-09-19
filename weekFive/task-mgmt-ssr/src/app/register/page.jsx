@@ -2,7 +2,7 @@
 
 import { Suspense, lazy, useState } from "react";
 import EmailInput from "@/components/EmailInput";
-import NameInput from "@/components/NameInput";
+import TextInput from "@/components/TextInput";
 import PasswordInput from "@/components/PasswordInput";
 import { Box } from "@mui/material";
 import { registerUser } from "@/_lib/api";
@@ -74,14 +74,14 @@ const Register = () => {
       }}
     >
       <Suspense fallback={<Loading />}>
-        <NameInput
+        <TextInput
           id="first-name"
           name="first_name"
           placeholder="First name"
           value={formData.first_name}
           onChange={handleChange}
         />
-        <NameInput
+        <TextInput
           id="last-name"
           name="last_name"
           placeholder="Last name"

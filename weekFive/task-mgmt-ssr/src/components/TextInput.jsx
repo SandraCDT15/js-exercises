@@ -1,6 +1,6 @@
 import { FormControl, InputLabel, OutlinedInput } from "@mui/material";
 
-const NameInput = ({ id, name, placeholder, value, onChange }) => {
+const TextInput = ({ id, name, placeholder, value, onChange }) => {
   return (
     <FormControl>
       <InputLabel htmlFor="name-input" sx={{ marginLeft: 0, marginTop: 3 }}>
@@ -22,4 +22,4 @@ const NameInput = ({ id, name, placeholder, value, onChange }) => {
   );
 };
 
-export default NameInput;
+export default TextInput;

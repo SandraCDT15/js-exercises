@@ -1,19 +1,19 @@
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
   CardMedia,
+  IconButton,
   Typography,
 } from "@mui/material";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import EditIcon from "@mui/icons-material/Edit";
 
 const CardElem = ({ title, id }) => {
   return (
     <div>
       <Card
         sx={{
-          width: "85%",
+          width: 250,
           height: "100%",
           transition: "0.3s",
           "&:hover": { transform: "scale(1.03)", boxShadow: 6 },
@@ -50,13 +50,13 @@ const CardElem = ({ title, id }) => {
           <Typography
             sx={{ fontWeight: "bold", color: "#3d3d3dff", marginTop: 1 }}
           >
-            {id}
+            id:{id}
           </Typography>
         </CardContent>
         <CardActions sx={{ marginLeft: 1, marginBottom: 2 }}>
-          <Button startIcon={<AddShoppingCartIcon />} variant="contained">
-            Add to Cart
-          </Button>
+          <IconButton aria-label="edit" href={`./provider/${id}`}>
+            <EditIcon />
+          </IconButton>
         </CardActions>
       </Card>
     </div>
