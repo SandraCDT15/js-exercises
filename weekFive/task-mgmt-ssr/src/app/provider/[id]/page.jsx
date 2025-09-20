@@ -1,13 +1,14 @@
-import { getProduct } from "@/_lib/api";
-import ProductsDetail from "@/components/ProductDetail";
+import { getProvider } from "@/_lib/api";
+import ProviderDetail from "@/components/ProviderDetail";
 
 const page = async ({ params }) => {
   const info = await params;
-  const result = await getProduct(info.id);
+  console.log(info.id);
+  const result = await getProvider(info.id);
 
   return (
     <div>
-      <ProductsDetail product={result} />
+      <ProviderDetail provider={result} />
     </div>
   );
 };

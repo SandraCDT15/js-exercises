@@ -49,6 +49,27 @@ export async function getProducts() {
   return products.data;
 }
 
+export async function getProvider(id) {
+  const token =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNywidXNlcm5hbWUiOiJzYW5kcmExIiwiZXhwIjoxNzU5NjIzODMwLCJlbWFpbCI6InNhbmRyYWd1bGxpdEBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTc1ODMyNzgzMH0.GIFu65-WJqikNR1h63LEjiY4C6nnCND-CGHJRN1bZuE";
+
+  const response = await fetch(
+    `https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier/${id}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `JWT ${token}`,
+      },
+    }
+  );
+  if (!response.ok) {
+    console.log(response);
+    throw new Error("Can´t get provider");
+  }
+
+  return response.json();
+}
+
 export async function createProvider({ business_name, business_type }) {
   const token = localStorage.getItem("token");
   console.log(token);
@@ -105,23 +126,23 @@ export async function updateProvider(id) {
 
 //Provider cant be deleted, has to be unavailable
 
-export async function deleteProvider() {
+export async function deleteProvider(id) {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    "https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier",
+    `https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier/${id}`,
     {
-      method: "DELETE",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `JWT ${token}`,
       },
-      body: JSON.stringify({ business_name: "Test2" }),
+      body: JSON.stringify({ id, is_archived: true }),
     }
   );
 
   if (!response.ok) {
-    throw new Error("There was a problem updating the provider");
+    throw new Error("Provider couldn't be deleted");
   }
 
   return response.json();
@@ -204,7 +225,7 @@ export async function deleteProduct(id) {
   );
 
   if (!response.ok) {
-    throw new Error("Product coulnd't be deleted");
+    throw new Error("Product couldn't be deleted");
   }
 
   return response.json();

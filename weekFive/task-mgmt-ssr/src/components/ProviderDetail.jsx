@@ -2,19 +2,19 @@
 import { Box, Button } from "@mui/material";
 import TextInput from "./TextInput";
 import { useState } from "react";
-import { deleteProduct, updateProduct } from "@/_lib/api";
+import { deleteProvider, updateProvider } from "@/_lib/api";
 import ConfirmDelete from "./ConfirmDelete";
 import EditModal from "./EditModal";
 
-const ProductDetail = ({ product }) => {
-  const date = new Date(product.date_created);
+const ProviderDetail = ({ provider }) => {
+  const date = new Date(provider.date_created);
   const [openEdit, setOpenEdit] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
 
   const handleSave = async (name) => {
     try {
-      const result = await updateProduct(product.id, name);
-      console.log("Prooduct updated", result);
+      const result = await updateProvider(provider.id, name);
+      console.log("Provider updated", result);
     } catch (err) {
       console.error(err.message);
     }
@@ -24,8 +24,8 @@ const ProductDetail = ({ product }) => {
 
   const handleDelete = async () => {
     try {
-      const result = await deleteProduct(product.id);
-      console.log("Product deleted", result);
+      const result = await deleteProvider(provider.id);
+      console.log("Provider deleted", result);
     } catch (err) {
       console.error(err.message);
     }
@@ -42,20 +42,20 @@ const ProductDetail = ({ product }) => {
         }}
       >
         <TextInput
-          id="product-id"
-          name="productId"
-          placeholder="Product ID"
-          value={product.id}
+          id="provider-id"
+          name="providerId"
+          placeholder="Provider ID"
+          value={provider.id}
         ></TextInput>
         <TextInput
-          id="product-name"
-          name="productName"
-          placeholder="Product Name"
-          value={product.name}
+          id="provider-name"
+          name="providerName"
+          placeholder="Provider Name"
+          value={provider.name}
         ></TextInput>
         <TextInput
-          id="product-date"
-          name="productDate"
+          id="provider-date"
+          name="providerDate"
           placeholder="Creation Date"
           value={date.toLocaleString()}
         ></TextInput>
@@ -80,14 +80,14 @@ const ProductDetail = ({ product }) => {
         </Button>
 
         <EditModal
-          itemName={product.name}
+          itemName={provider.name}
           openEdit={openEdit}
           close={() => setOpenEdit(false)}
           handleSave={handleSave}
         />
         <ConfirmDelete
-          itemType="product"
-          itemName={product.name}
+          itemType="provider"
+          itemName={provider.name}
           open={openDelete}
           close={() => setOpenDelete(false)}
           handleDelete={handleDelete}
@@ -97,4 +97,4 @@ const ProductDetail = ({ product }) => {
   );
 };
 
-export default ProductDetail;
+export default ProviderDetail;
