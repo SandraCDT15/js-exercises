@@ -19,8 +19,8 @@ const style = {
   flexDirection: "column",
 };
 
-const EditModal = ({ item, openEdit, close, handleSave }) => {
-  const [name, setName] = useState(item.name);
+const EditModal = ({ itemName, openEdit, close, handleSave }) => {
+  const [name, setName] = useState(itemName);
 
   return (
     <Box>
@@ -30,8 +30,8 @@ const EditModal = ({ item, openEdit, close, handleSave }) => {
             Edit Name
           </Typography>
           <TextInput
-            id={`edit-${item.name}`}
-            name={`edit${item.name}`}
+            id={`edit-${itemName}`}
+            name={`edit${itemName}`}
             placeholder="Edit Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -54,7 +54,7 @@ const EditModal = ({ item, openEdit, close, handleSave }) => {
             <Button
               sx={{ width: "30%" }}
               variant="contained"
-              onClick={handleSave}
+              onClick={() => handleSave(name)}
             >
               Save
             </Button>
