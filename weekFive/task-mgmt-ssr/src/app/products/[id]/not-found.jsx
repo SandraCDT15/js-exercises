@@ -7,4 +7,3 @@ const NotFound = () => {
 };
 
 export default NotFound;
-<h1>Product not found</h1>;

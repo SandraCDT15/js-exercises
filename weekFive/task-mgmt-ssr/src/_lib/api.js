@@ -1,3 +1,7 @@
+"use server";
+
+import { cookies } from "next/headers";
+
 export async function registerUser(formData) {
   const response = await fetch(
     "https://bapi.suajam.com/arteukimil/api/v1/auth/registration/",
@@ -29,7 +33,12 @@ export async function loginUser({ email, password }) {
     throw new Error("Login failed");
   }
 
-  return response.json();
+  const jsonResponse = await response.json();
+
+  const cookie = await cookies();
+  cookie.set("token", jsonResponse.token);
+
+  return jsonResponse;
 }
 
 export async function getProducts() {
@@ -50,8 +59,8 @@ export async function getProducts() {
 }
 
 export async function getProvider(id) {
-  const token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyNywidXNlcm5hbWUiOiJzYW5kcmExIiwiZXhwIjoxNzU5NjIzODMwLCJlbWFpbCI6InNhbmRyYWd1bGxpdEBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTc1ODMyNzgzMH0.GIFu65-WJqikNR1h63LEjiY4C6nnCND-CGHJRN1bZuE";
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
 
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier/${id}`,
@@ -71,8 +80,9 @@ export async function getProvider(id) {
 }
 
 export async function createProvider({ business_name, business_type }) {
-  const token = localStorage.getItem("token");
-  console.log(token);
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
+
   const response = await fetch(
     "https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier",
     {
@@ -96,7 +106,8 @@ export async function createProvider({ business_name, business_type }) {
 }
 
 export async function updateProvider(id) {
-  const token = localStorage.getItem("token");
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
 
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier/${id}`,
@@ -128,7 +139,8 @@ export async function updateProvider(id) {
 //Provider cant be deleted, has to be unavailable
 
 export async function deleteProvider(id) {
-  const token = localStorage.getItem("token");
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
 
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier/${id}`,
@@ -173,7 +185,9 @@ export async function getProduct(id) {
 }
 
 export async function createProduct(name, category) {
-  const token = localStorage.getItem("token");
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
+
   const response = await fetch(
     "https://bapi.suajam.com/arteukimil/api/v1/catalog/product",
     {
@@ -194,7 +208,8 @@ export async function createProduct(name, category) {
 }
 
 export async function updateProduct(id, name) {
-  const token = localStorage.getItem("token");
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
 
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/catalog/product/${id}`,
@@ -217,7 +232,8 @@ export async function updateProduct(id, name) {
 }
 
 export async function deleteProduct(id) {
-  const token = localStorage.getItem("token");
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
 
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/catalog/product/${id}`,
@@ -239,7 +255,9 @@ export async function deleteProduct(id) {
 }
 
 export async function refreshToken() {
-  const token = localStorage.getItem("token");
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
+
   const response = await fetch(
     "https://bapi.suajam.com/arteukimil/api/v1/auth/refresh-token",
     {
