@@ -107,6 +107,7 @@ export async function updateProvider(id) {
         Authorization: `JWT ${token}`,
       },
       body: JSON.stringify({ id }),
+      cache: "no-store",
     }
   );
 
@@ -159,6 +160,11 @@ export async function getProduct(id) {
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/catalog/product/${id}`
   );
+
+  if (response.status === 404) {
+    return null;
+  }
+
   if (!response.ok) {
     throw new Error("Can´t get product");
   }
@@ -199,6 +205,7 @@ export async function updateProduct(id, name) {
         Authorization: `JWT ${token}`,
       },
       body: JSON.stringify({ id, name }),
+      cache: "no-store",
     }
   );
 

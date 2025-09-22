@@ -5,8 +5,10 @@ import { useState } from "react";
 import { deleteProvider, updateProvider } from "@/_lib/api";
 import ConfirmDelete from "./ConfirmDelete";
 import EditModal from "./EditModal";
+import { useRouter } from "next/navigation";
 
 const ProviderDetail = ({ provider }) => {
+  const router = useRouter();
   const date = new Date(provider.date_created);
   const [openEdit, setOpenEdit] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
@@ -14,6 +16,7 @@ const ProviderDetail = ({ provider }) => {
   const handleSave = async (name) => {
     try {
       const result = await updateProvider(provider.id, name);
+      router.refresh();
       console.log("Provider updated", result);
     } catch (err) {
       console.error(err.message);
@@ -25,6 +28,8 @@ const ProviderDetail = ({ provider }) => {
   const handleDelete = async () => {
     try {
       const result = await deleteProvider(provider.id);
+      //Change this route
+      router.push("/");
       console.log("Provider deleted", result);
     } catch (err) {
       console.error(err.message);

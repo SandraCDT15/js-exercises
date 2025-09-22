@@ -47,7 +47,10 @@ const EditModal = ({ itemName, openEdit, close, handleSave }) => {
             <Button
               sx={{ backgroundColor: "red", width: "30%" }}
               variant="contained"
-              onClick={close}
+              onClick={() => {
+                setName(itemName);
+                close();
+              }}
             >
               Cancel
             </Button>
