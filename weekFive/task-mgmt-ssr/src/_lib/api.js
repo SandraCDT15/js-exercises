@@ -1,3 +1,7 @@
+"use server";
+
+import { cookies } from "next/headers";
+
 export async function registerUser(formData) {
   const response = await fetch(
     "https://bapi.suajam.com/arteukimil/api/v1/auth/registration/",
@@ -29,7 +33,12 @@ export async function loginUser({ email, password }) {
     throw new Error("Login failed");
   }
 
-  return response.json();
+  const jsonResponse = await response.json();
+
+  const cookie = await cookies();
+  cookie.set("token", jsonResponse.token);
+
+  return jsonResponse;
 }
 
 export async function getProducts() {
@@ -50,7 +59,11 @@ export async function getProducts() {
 }
 
 export async function getProvider(id) {
-  const token = "";
+<<<<<<< HEAD
+=======
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
+>>>>>>> b976aeb (Change token from local storage to cookies)
 
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier/${id}`,
@@ -70,8 +83,9 @@ export async function getProvider(id) {
 }
 
 export async function createProvider({ business_name, business_type }) {
-  const token = localStorage.getItem("token");
-  console.log(token);
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
+
   const response = await fetch(
     "https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier",
     {
@@ -95,7 +109,8 @@ export async function createProvider({ business_name, business_type }) {
 }
 
 export async function updateProvider(id) {
-  const token = localStorage.getItem("token");
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
 
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier/${id}`,
@@ -106,6 +121,7 @@ export async function updateProvider(id) {
         Authorization: `JWT ${token}`,
       },
       body: JSON.stringify({ id }),
+      cache: "no-store",
     }
   );
 
@@ -126,7 +142,8 @@ export async function updateProvider(id) {
 //Provider cant be deleted, has to be unavailable
 
 export async function deleteProvider(id) {
-  const token = localStorage.getItem("token");
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
 
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier/${id}`,
@@ -158,6 +175,11 @@ export async function getProduct(id) {
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/catalog/product/${id}`
   );
+
+  if (response.status === 404) {
+    return null;
+  }
+
   if (!response.ok) {
     throw new Error("Can´t get product");
   }
@@ -166,7 +188,9 @@ export async function getProduct(id) {
 }
 
 export async function createProduct(name, category) {
-  const token = localStorage.getItem("token");
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
+
   const response = await fetch(
     "https://bapi.suajam.com/arteukimil/api/v1/catalog/product",
     {
@@ -187,7 +211,8 @@ export async function createProduct(name, category) {
 }
 
 export async function updateProduct(id, name) {
-  const token = localStorage.getItem("token");
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
 
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/catalog/product/${id}`,
@@ -198,6 +223,7 @@ export async function updateProduct(id, name) {
         Authorization: `JWT ${token}`,
       },
       body: JSON.stringify({ id, name }),
+      cache: "no-store",
     }
   );
 
@@ -209,7 +235,8 @@ export async function updateProduct(id, name) {
 }
 
 export async function deleteProduct(id) {
-  const token = localStorage.getItem("token");
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
 
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/catalog/product/${id}`,
@@ -231,7 +258,9 @@ export async function deleteProduct(id) {
 }
 
 export async function refreshToken() {
-  const token = localStorage.getItem("token");
+  const cookie = await cookies();
+  const token = cookie.get("token").value;
+
   const response = await fetch(
     "https://bapi.suajam.com/arteukimil/api/v1/auth/refresh-token",
     {

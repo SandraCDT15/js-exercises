@@ -5,8 +5,10 @@ import { useState } from "react";
 import { deleteProduct, updateProduct } from "@/_lib/api";
 import ConfirmDelete from "./ConfirmDelete";
 import EditModal from "./EditModal";
+import { useRouter } from "next/navigation";
 
 const ProductDetail = ({ product }) => {
+  const router = useRouter();
   const date = new Date(product.date_created);
   const [openEdit, setOpenEdit] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
@@ -14,7 +16,8 @@ const ProductDetail = ({ product }) => {
   const handleSave = async (name) => {
     try {
       const result = await updateProduct(product.id, name);
-      console.log("Prooduct updated", result);
+      router.refresh();
+      console.log("Product updated", result);
     } catch (err) {
       console.error(err.message);
     }
@@ -25,6 +28,7 @@ const ProductDetail = ({ product }) => {
   const handleDelete = async () => {
     try {
       const result = await deleteProduct(product.id);
+      router.push("/");
       console.log("Product deleted", result);
     } catch (err) {
       console.error(err.message);

@@ -38,9 +38,7 @@ const Login = () => {
 
     try {
       const result = await loginUser(formData);
-
       console.log("Login successful: ", result);
-      localStorage.setItem("token", result.token);
       router.push("/");
     } catch (err) {
       console.error(err.message);
