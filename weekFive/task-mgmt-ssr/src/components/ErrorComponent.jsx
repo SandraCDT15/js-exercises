@@ -13,7 +13,12 @@ export default function ErrorTrigger() {
   return (
     <Button
       onClick={() => setShouldThrow(true)}
-      sx={{ padding: "10px", backgroundColor: "red", color: "white" }}
+      sx={{
+        padding: "10px",
+        backgroundColor: "red",
+        color: "white",
+        marginTop: "30px",
+      }}
     >
       Trigger error
     </Button>

@@ -37,6 +37,7 @@ export async function loginUser({ email, password }) {
 
   const cookie = await cookies();
   cookie.set("token", jsonResponse.token);
+  cookie.set("user-role", "viewer");
 
   return jsonResponse;
 }
@@ -132,15 +133,6 @@ export async function updateProvider(id) {
   return response.json();
 }
 
-// try {
-//   const result = await updateProvider();
-//   console.log("Provider updated", result);
-// } catch (err) {
-//   console.error(err.message);
-// }
-
-//Provider cant be deleted, has to be unavailable
-
 export async function deleteProvider(id) {
   const cookie = await cookies();
   const token = cookie.get("token").value;
@@ -163,13 +155,6 @@ export async function deleteProvider(id) {
 
   return response.json();
 }
-
-// try {
-//   const result = await deleteProvider();
-//   console.log("Provider updated", result);
-// } catch (err) {
-//   console.error(err.message);
-// }
 
 export async function getProduct(id) {
   const response = await fetch(
