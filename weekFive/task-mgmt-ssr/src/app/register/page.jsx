@@ -4,7 +4,7 @@ import { Suspense, lazy, useState } from "react";
 import EmailInput from "@/components/EmailInput";
 import TextInput from "@/components/TextInput";
 import PasswordInput from "@/components/PasswordInput";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { registerUser } from "@/_lib/api";
 import Loading from "./loading";
 import { validateEmail, validatePassword } from "@/_utils/validateEmail";
@@ -117,6 +117,13 @@ const Register = () => {
           onChange={handleChange}
         />
         <FormButton text="Register" />
+        <Button
+          variant="outlined"
+          href="/login"
+          sx={{ width: { xs: 250, md: 300, lg: 350 }, marginTop: 3 }}
+        >
+          Login
+        </Button>
       </Suspense>
     </Box>
   );
