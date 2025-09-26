@@ -60,11 +60,8 @@ export async function getProducts() {
 }
 
 export async function getProvider(id) {
-<<<<<<< HEAD
-=======
   const cookie = await cookies();
   const token = cookie.get("token").value;
->>>>>>> b976aeb (Change token from local storage to cookies)
 
   const response = await fetch(
     `https://bapi.suajam.com/arteukimil/api/v1/inventory/supplier/${id}`,
